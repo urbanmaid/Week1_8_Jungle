@@ -10,14 +10,14 @@ public class ItemObject : MonoBehaviour
     */
 
     private float rotSpeed = 8f;
-    private Kimminkyum0212_GameManager gm;
+    private GameManager gm;
 
     [SerializeField] float healMount = 10f;
     [SerializeField] int missileAmount = 5;
 
     private void Start()
     {
-        gm = Kimminkyum0212_GameManager.instance;
+        gm = GameManager.instance;
     }
 
     // Update is called once per frame
