@@ -15,7 +15,7 @@ public class Kimminkyum0212_SpawnManager : MonoBehaviour
         {
             stages.Add(i, new int[5]);
         }
-        stages[1] = new int[] { 10, 0, 0, 0, 0 };
+        stages[1] = new int[] { 10, 4, 0, 0, 0 };
         stages[2] = new int[] { 10, 1, 0, 0, 0 };
         stages[3] = new int[] { 10, 5, 0, 0, 0 };
         stages[4] = new int[] { 10, 10, 1, 0, 0 };

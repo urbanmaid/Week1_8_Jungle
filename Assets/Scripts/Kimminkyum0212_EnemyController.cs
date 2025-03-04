@@ -4,12 +4,12 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
 {
     private Rigidbody2D enemyRb;
     private GameObject player;
+    [SerializeField] bool isShootable = true;
 
     [Header("Enemy Info")]
     public float health;
     public float moveSpeed;
     public bool inRange;
-
     
     [Header("Projectile Info")]
     public float damage;
@@ -18,11 +18,15 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
     private float cooldown;
     public float scale;
     public Color projectileColor;
-    
+
+    [Header("Item")]
+    [SerializeField] ItemSpawnTimeManager itemSpawnTimeManager;
+
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        itemSpawnTimeManager = ItemSpawnTimeManager.instance;
     }
 
     void Update()
@@ -43,14 +47,17 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
             float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            if (cooldown > 0)
+            if (isShootable)
             {
-                cooldown -= Time.deltaTime;
-            }
-            else if (inRange)
-            {
-                Shoot();
-                cooldown = fireRate;
+                if (cooldown > 0)
+                {
+                    cooldown -= Time.deltaTime;
+                }
+                else if (inRange)
+                {
+                    Shoot();
+                    cooldown = fireRate;
+                }
             }
         } else
         {
@@ -67,6 +74,15 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
             Kimminkyum0212_GameManager.instance.enemyCount--;
             Kimminkyum0212_GameManager.instance.UpdateEnemyCount();
             Destroy(gameObject);
+            InstanciataItem(transform.position);
+        }
+    }
+
+    private void InstanciataItem(Vector3 targetPosition)
+    {
+        if (itemSpawnTimeManager.IsAbleToSpawnItem())
+        {
+            Instantiate(itemSpawnTimeManager.SpawnItem(), targetPosition, Quaternion.identity);
         }
     }
 
