@@ -36,7 +36,7 @@ public class ItemSpawnTimeManager : MonoBehaviour
         return isAbleToSpawn;
     }
 
-    public GameObject SpawnItem(GameObject item){
+    public GameObject SpawnItem(){
         return itemList[Random.Range(0, itemList.Count)];
     }
 }
