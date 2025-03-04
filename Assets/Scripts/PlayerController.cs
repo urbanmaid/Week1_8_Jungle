@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Movement")]
     private Rigidbody2D playerRb;
     public float moveSpeed;
+    private float curSpeed;
     private Camera mainCam;
     public GameObject shooter;
 
@@ -30,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [Header("Skills")]
     public float dashTime = 1.5f;
     public GameObject gravityShot;
+    [SerializeField] bool isDashing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +41,10 @@ public class PlayerController : MonoBehaviour
         coolDown = 0;
         playerRb = gameObject.GetComponent<Rigidbody2D>();
         mainCam = Camera.main;
+        isDashing = false;
+        curSpeed = moveSpeed;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -48,11 +55,8 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         shooter.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-
-
-
         Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        transform.Translate(moveDir.normalized * Mathf.Lerp(0, moveSpeed, 0.5f) * Time.deltaTime, Space.World);
+        transform.Translate(moveDir.normalized * Mathf.Lerp(0, curSpeed, 0.5f) * Time.deltaTime, Space.World);
         if (coolDown > 0)
         {
             coolDown -= Time.deltaTime;
@@ -93,6 +97,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GravityShot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            isDashing = true;
+            curSpeed *= 4;
+            StartCoroutine("Dash");
         }
     }
 
@@ -140,7 +151,18 @@ public class PlayerController : MonoBehaviour
     void GravityShot()
     {
         GameObject gShot = Instantiate(gravityShot, transform.position, shooter.transform.rotation);
-        
+    }
 
+    IEnumerator Dash(){
+        yield return new WaitForSeconds(3f);
+        isDashing = false;
+        curSpeed = moveSpeed;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(isDashing && collision.gameObject.CompareTag("Enemy")){
+            collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>().Damage(10f);
+        }
     }
 }
