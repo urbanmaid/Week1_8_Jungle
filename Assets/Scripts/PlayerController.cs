@@ -9,14 +9,22 @@ public class PlayerController : MonoBehaviour
     private Camera mainCam;
     public GameObject shooter;
 
-    [Header("Projectile")]
+    [Header("Basic Projectile")]
     public GameObject projectile;
     public float fireRate;
     private float coolDown;
     public float damage = 5;
     public float projectileSpeed = 7;
     public Color projectileColor;
-    
+
+    [Header("Missile")]
+    public GameObject missile;
+    public float spawnDistance;
+    private GameObject _currentProjectile;
+    private float rotationSpeed = 100f; 
+    private float _rotateAngle = 90f;
+    private int _rotateDirection = 0;
+    public float launchSpeed = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +58,33 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        
+        if (Input.GetMouseButton(1))
+        {
+            if (_currentProjectile != null)
+            {
+                RotateProjectile();
+            }
+        }
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+            _rotateDirection = -1;
+            SpawnProjectile();
+        }
+
+    if (Input.GetMouseButtonUp(1))
+        {
+            if (_currentProjectile != null)
+            {
+                // Launch current projectile
+                LaunchProjectile();
+                
+            }
+        }
+
+
+        
     }
 
     void Shoot()
@@ -60,4 +95,40 @@ public class PlayerController : MonoBehaviour
         projectile.GetComponent<Kimminkyum0212_Projectile>().Init(damage, moveSpeed, 0.1f, projectileColor);
         coolDown = fireRate;
     }
+
+    private void SpawnProjectile()
+    {
+        if (_currentProjectile == null)
+        {
+            Vector3 spawnPos = transform.position + Vector3.up * spawnDistance;
+            
+            _currentProjectile = Instantiate(missile, spawnPos, Quaternion.identity);
+            _currentProjectile.tag = "Untagged";
+        }
+    }
+
+    private void RotateProjectile()
+    {
+        _rotateAngle += rotationSpeed * _rotateDirection * Time.deltaTime;
+        var radian = _rotateAngle * Mathf.Deg2Rad;
+        var newPos = transform.position + new Vector3(Mathf.Cos(radian), Mathf.Sin(radian), 0) * spawnDistance;
+        _currentProjectile.transform.position = newPos;
+    }
+
+    private void LaunchProjectile()
+    {
+        // _currentProjectile.tag = "Projectile";
+        
+        var direction = (_currentProjectile.transform.position - transform.position).normalized;
+        var rb = _currentProjectile.GetComponent<Rigidbody2D>();
+        
+        rb.linearVelocity = direction * launchSpeed;
+        
+
+        // Init current projectile
+        _currentProjectile = null;
+        _rotateAngle = 90;
+        _rotateDirection = 0;
+    }
+
 }

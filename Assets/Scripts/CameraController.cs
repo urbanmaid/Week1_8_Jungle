@@ -14,10 +14,8 @@ public class CameraController : MonoBehaviour
     void Update()
     {
 
-        if (Kimminkyum0212_GameManager.instance.isPlaying)
-        {
-            transform.position = new Vector3(player.position.x, player.position.y, -10);
-        }
+        transform.position = new Vector3(player.position.x, player.position.y, -10);
+
 
     }
 }
