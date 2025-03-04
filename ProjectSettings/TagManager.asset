@@ -13,10 +13,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Enemy
+  - 
   - 
   - 
   - 
@@ -46,8 +46,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bakcground
+    uniqueID: 2285974451
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2537728219
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2149439559
+    locked: 0
+  - name: Enemy
+    uniqueID: 399488989
+    locked: 0
   - name: Player
-    uniqueID: 3002032443
+    uniqueID: 625706405
     locked: 0
   m_RenderingLayers:
   - Default

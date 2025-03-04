@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 825278891
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.93962264, g: 0.8684432, b: 0.47335705, a: 1}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 825278891
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.94117653, g: 0.86666673, b: 0.47058827, a: 1}
@@ -184,8 +184,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7393313984170326205}
   - component: {fileID: 6520931804217857312}
-  - component: {fileID: 487142889960873493}
   - component: {fileID: 4333480231518410046}
+  - component: {fileID: -8308283947896370482}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -258,26 +258,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0209532, y: 1.0340481}
   m_EdgeRadius: 0
---- !u!114 &487142889960873493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6594762690197060280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26df0ae36ad9ccf4aa7824a1f6f0646b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  moveSpeed: 3
-  inRange: 0
-  damage: 5
-  projectileSpeed: 7.5
-  fireRate: 0.5
-  scale: 0.1
-  projectileColor: {r: 0.10980393, g: 0.9960785, b: 0, a: 1}
 --- !u!50 &4333480231518410046
 Rigidbody2D:
   serializedVersion: 5
@@ -305,6 +285,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8308283947896370482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594762690197060280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26df0ae36ad9ccf4aa7824a1f6f0646b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isShootable: 0
+  health: 10
+  moveSpeed: 1
+  inRange: 0
+  damage: 0
+  projectileSpeed: 0
+  fireRate: 0
+  scale: 0
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8872828490048604014
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +380,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 825278891
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.94117653, g: 0.86666673, b: 0.47058827, a: 1}
