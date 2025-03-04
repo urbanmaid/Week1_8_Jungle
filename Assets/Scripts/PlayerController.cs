@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
             GravityShot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !isDashing)
         {
             isDashing = true;
             curSpeed *= 4;
@@ -163,6 +163,21 @@ public class PlayerController : MonoBehaviour
     {
         if(isDashing && collision.gameObject.CompareTag("Enemy")){
             collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>().Damage(10f);
+        } else if (collision.gameObject.CompareTag("Enemy Range"))
+        {
+            Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponentInParent<Kimminkyum0212_EnemyController>();
+            enemy.inRange = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy Range"))
+        {
+            Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponentInParent<Kimminkyum0212_EnemyController>();
+            enemy.inRange = false;
+        }
+    }
+
+
 }

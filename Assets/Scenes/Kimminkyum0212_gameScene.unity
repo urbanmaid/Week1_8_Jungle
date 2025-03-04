@@ -1516,7 +1516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &351912544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,7 +2397,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee898d7c2751db43ba47ba584d2cf66, type: 3}
+  m_Script: {fileID: 11500000, guid: 719160b71edbb754b9b99172648d6869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1093987693}
@@ -8933,7 +8933,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983784275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39849ab8dfbab244e9b8849e6501dc40, type: 3}
   m_Name: 
@@ -8967,7 +8967,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983784275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39849ab8dfbab244e9b8849e6501dc40, type: 3}
   m_Name: 
@@ -8986,14 +8986,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983784275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8121cac098defd74cbd87ebfa57f6bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bossList:
-  - {fileID: 8398393140749507228, guid: bdf94b3558b01464f84eb688e9f2faef, type: 3}
-  - {fileID: 3614938819529163485, guid: bd1a0b622bf9fdb49a1310ead0e616df, type: 3}
+  - {fileID: 9195407047507399379, guid: 503b111c7b19dec45a5b6a01873ff7bc, type: 3}
+  - {fileID: 3873177320849249521, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
+  - {fileID: 2912978008167620341, guid: ec0506089cb22914099963a24fd87289, type: 3}
   isBossSpawned: 0
   spawnInterval: 10
   distFromPlayerToEnemy: 30
@@ -9093,7 +9094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1093987693}
-  - component: {fileID: 1093987692}
+  - component: {fileID: 1093987696}
   - component: {fileID: 1093987695}
   - component: {fileID: 1093987694}
   m_Layer: 0
@@ -9103,25 +9104,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1093987692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093987691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc6c63d953737d74f8e36459de957d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 7
-  shooter: {fileID: 1450055044}
-  bounceForce: 100
-  fireRate: 0.5
-  damage: 5
-  projectileSpeed: 7
-  projectileColor: {r: 0.9960785, g: 0.24705884, b: 0, a: 1}
 --- !u!4 &1093987693
 Transform:
   m_ObjectHideFlags: 0
@@ -9212,6 +9194,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1093987696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093987691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e90e327127a5243ab4f0107b2ed9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  shooter: {fileID: 1450055044}
+  projectile: {fileID: 5296270854075526891, guid: 9e766f3da0323a64ca4f04221ab987fe, type: 3}
+  fireRate: 0.5
+  damage: 5
+  projectileSpeed: 7
+  projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  missilePrefab: {fileID: 5820510208790133172, guid: d8ae3c7cec8d8ef4280014581f217ba5, type: 3}
+  spawnDistance: 1.5
+  launchSpeed: 5
+  dashTime: 1.5
+  gravityShot: {fileID: 4209410450099421778, guid: 37fbbe963cf5fe146941613bbd116228, type: 3}
+  isDashing: 0
 --- !u!1 &1101194915
 GameObject:
   m_ObjectHideFlags: 0
@@ -9418,6 +9425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134957376}
   - component: {fileID: 1134957377}
+  - component: {fileID: 1134957378}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -9495,6 +9503,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1134957378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134957375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719160b71edbb754b9b99172648d6869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1159385818
 GameObject:
   m_ObjectHideFlags: 0

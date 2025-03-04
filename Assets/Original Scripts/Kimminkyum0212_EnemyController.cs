@@ -10,7 +10,7 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
     public float health;
     public float moveSpeed;
     public bool inRange;
-    
+
     [Header("Projectile Info")]
     public float damage;
     public float projectileSpeed;
@@ -31,54 +31,54 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (Kimminkyum0212_GameManager.instance.isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             //Enemy movement and rotation
             Vector2 moveDir = player.transform.position - transform.position;
-            if (!inRange)
-            {
-                enemyRb.linearVelocity = moveDir.normalized * moveSpeed;
-            }
-            else
-            {
-                enemyRb.linearVelocity = Vector2.zero;
-            }
-
             float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
-
             if (isShootable)
             {
-                if (cooldown > 0)
+                if (!inRange)
                 {
-                    cooldown -= Time.deltaTime;
+                    enemyRb.linearVelocity = moveDir.normalized * moveSpeed;
                 }
-                else if (inRange)
+                else
                 {
-                    Shoot();
-                    cooldown = fireRate;
+                    enemyRb.linearVelocity = Vector2.zero;
+                    if (cooldown > 0)
+                    {
+                        cooldown -= Time.deltaTime;
+                    }
+                    else 
+                    {
+                        Shoot();
+                        cooldown = fireRate;
+                    }
                 }
+            } else {
+                enemyRb.linearVelocity = moveDir.normalized * moveSpeed;
             }
-        } else
+
+        }
+        else
         {
             enemyRb.linearVelocity = Vector2.zero;
         }
-        
+
     }
 
     public void Damage(float dmgAmount)
     {
         health -= dmgAmount;
-        if(health <= 0)
+        if (health <= 0)
         {
-            Kimminkyum0212_GameManager.instance.enemyCount--;
-            Kimminkyum0212_GameManager.instance.UpdateEnemyCount();
             Destroy(gameObject);
-            InstanciataItem(transform.position);
+            InstantiateItem(transform.position);
         }
     }
 
-    private void InstanciataItem(Vector3 targetPosition)
+    private void InstantiateItem(Vector3 targetPosition)
     {
         if (itemSpawnTimeManager.IsAbleToSpawnItem())
         {
@@ -90,7 +90,7 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
     //used object pooling for projectile spawning and despawning
     private void Shoot()
     {
-        GameObject projectile =  Kimminkyum0212_ObjectPoolManager.instance.GetGo("Enemy Projectile");
+        GameObject projectile = Kimminkyum0212_ObjectPoolManager.instance.GetGo("Enemy Projectile");
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
         projectile.GetComponent<Kimminkyum0212_Projectile>().Init(damage, projectileSpeed, scale, projectileColor);

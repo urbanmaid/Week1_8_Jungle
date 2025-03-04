@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class ItemSpawnTimeManager : MonoBehaviour
 {
+    public static ItemSpawnTimeManager instance;
+
     [Header("Generic")]
     private float timeSinceLastSpawn = 0f;
     [SerializeField] float spawnInterval = 30f;
@@ -13,9 +15,9 @@ public class ItemSpawnTimeManager : MonoBehaviour
     [Header("Generic")]
     public List<GameObject> itemList;
 
-    void Start()
+    void Awake()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame

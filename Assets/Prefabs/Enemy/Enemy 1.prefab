@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8203621919402858827}
   - component: {fileID: 1303404369357044779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4408612514591776518}
   - component: {fileID: 4873895647510331693}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6520931804217857312}
   - component: {fileID: 4333480231518410046}
   - component: {fileID: -8308283947896370482}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -306,6 +306,7 @@ MonoBehaviour:
   fireRate: 0
   scale: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  itemSpawnTimeManager: {fileID: 0}
 --- !u!1 &8872828490048604014
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8654387504145883673}
   - component: {fileID: 7676573176343411689}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7506534416116011270}
   - component: {fileID: 8124455765910950679}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Range
   m_TagString: Enemy Range
   m_Icon: {fileID: 0}
