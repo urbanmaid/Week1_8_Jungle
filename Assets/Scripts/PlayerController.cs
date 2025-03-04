@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,13 +19,18 @@ public class PlayerController : MonoBehaviour
     public Color projectileColor;
 
     [Header("Missile")]
-    public GameObject missile;
+    public GameObject missilePrefab;
     public float spawnDistance;
     private GameObject _currentProjectile;
-    private float rotationSpeed = 100f; 
+    private float rotationSpeed = 100f;
     private float _rotateAngle = 90f;
     private int _rotateDirection = 0;
     public float launchSpeed = 5f;
+
+    [Header("Skills")]
+    public float dashTime = 1.5f;
+    public GameObject gravityShot;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,15 +48,16 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         shooter.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        
-        
-        
+
+
+
         Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.Translate(moveDir.normalized * Mathf.Lerp(0, moveSpeed, 0.5f) * Time.deltaTime, Space.World);
         if (coolDown > 0)
         {
             coolDown -= Time.deltaTime;
-        } else 
+        }
+        else
         {
             if (Input.GetMouseButton(0))
             {
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        
+
         if (Input.GetMouseButton(1))
         {
             if (_currentProjectile != null)
@@ -66,33 +73,32 @@ public class PlayerController : MonoBehaviour
                 RotateProjectile();
             }
         }
-        
+
         if (Input.GetMouseButtonDown(1))
         {
             _rotateDirection = -1;
             SpawnProjectile();
         }
 
-    if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1))
         {
             if (_currentProjectile != null)
             {
                 // Launch current projectile
                 LaunchProjectile();
-                
+
             }
         }
 
-
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GravityShot();
+        }
     }
 
     void Shoot()
     {
-        //GameObject projectile = Kimminkyum0212_ObjectPoolManager.instance.GetGo("Player Projectile");
-        projectile.transform.position = transform.position;
-        projectile.transform.rotation = shooter.transform.rotation;
-        projectile.GetComponent<Kimminkyum0212_Projectile>().Init(damage, moveSpeed, 0.1f, projectileColor);
+        Instantiate(projectile, transform.position, shooter.transform.rotation);
         coolDown = fireRate;
     }
 
@@ -101,8 +107,8 @@ public class PlayerController : MonoBehaviour
         if (_currentProjectile == null)
         {
             Vector3 spawnPos = transform.position + Vector3.up * spawnDistance;
-            
-            _currentProjectile = Instantiate(missile, spawnPos, Quaternion.identity);
+
+            _currentProjectile = Instantiate(missilePrefab, spawnPos, Quaternion.identity);
             _currentProjectile.tag = "Untagged";
         }
     }
@@ -118,12 +124,12 @@ public class PlayerController : MonoBehaviour
     private void LaunchProjectile()
     {
         // _currentProjectile.tag = "Projectile";
-        
+
         var direction = (_currentProjectile.transform.position - transform.position).normalized;
         var rb = _currentProjectile.GetComponent<Rigidbody2D>();
-        
+
         rb.linearVelocity = direction * launchSpeed;
-        
+
 
         // Init current projectile
         _currentProjectile = null;
@@ -131,4 +137,10 @@ public class PlayerController : MonoBehaviour
         _rotateDirection = 0;
     }
 
+    void GravityShot()
+    {
+        GameObject gShot = Instantiate(gravityShot, transform.position, shooter.transform.rotation);
+        
+
+    }
 }
