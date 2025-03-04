@@ -79,6 +79,12 @@ public class Kimminkyum0212_GameManager : MonoBehaviour
             playScreen.SetActive(false);
             gameoverScreen.SetActive(true);
         }
+        else if(curHealth > maxHealth)
+        {
+            Debug.Log("Health Overflow detected, resetting health to max.");
+            curHealth = maxHealth;
+            UpdateSlider(curHealth);
+        }
     }
 
     public void StartGame()
