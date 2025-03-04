@@ -36,25 +36,25 @@ public class Kimminkyum0212_PlayerController : MonoBehaviour
     {
         if (Kimminkyum0212_GameManager.instance.isPlaying)
         {
-            //ÇÃ·¹ÀÌ¾î°¡ ¸¶¿ì½º Ä¿¼­·Î °¡¸®Å°´Â ¹æÇâÀ¸·Î È¸Àü]
-            //ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ®¸¦ È¸Àü½ÃÅ°¸é ÇÃ·¹ÀÌ¾î ÀÌµ¿ÇÏ´Â ¹æÇâÀÌ ¹Ù²î±â ¶§¹®¿¡ shooter ¿ÀºêÁ§Æ®¸¦ È¸Àü
+            //ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½]
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ shooter ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È¸ï¿½ï¿½
             Vector3 mousePos = Input.mousePosition;
             Vector3 worldPos = mainCam.WorldToScreenPoint(transform.localPosition);
             Vector2 offset = new Vector2(mousePos.x - worldPos.x, mousePos.y - worldPos.y);
             float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             shooter.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            //WASD ÀÎÇ²¿¡ µû¶ó ÀÌµ¿
-            //±¸Á¶¹°¿¡ ¸Â¾Æ Æ¨±â´Â ÁßÀÌ ¾Æ´Ï¶ó¸é ÀÌµ¿ °¡´É
+            //WASD ï¿½ï¿½Ç²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â¾ï¿½ Æ¨ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
             if (!isBouncing)
             {
                 Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 transform.Translate(moveDir.normalized * Mathf.Lerp(0, moveSpeed, 0.5f) * Time.deltaTime, Space.World);
             }
 
-            //ÇÃ·¹ÀÌ¾î »ç°Ý
-            //¸¶¿ì½º Å¬¸¯ ½Ã »ç°Ý
-            //»ç°Ý¼Óµµ¿¡ Á¦ÇÑÀÌ ÀÖÀ½
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ì½º Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
+            //ï¿½ï¿½Ý¼Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (coolDown > 0)
             {
                 coolDown -= Time.deltaTime;
@@ -69,7 +69,7 @@ public class Kimminkyum0212_PlayerController : MonoBehaviour
             }
         }
     }
-    //Àå¾Ö¹°°ú Ãæµ¹ ½Ã ÇÃ·¹ÀÌ¾î¿¡°Ô ÇÇÇØ¸¦ ÁÖ°í Ãñ°Ü³ª°¨
+    //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½Ü³ï¿½ï¿½ï¿½
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -89,8 +89,8 @@ public class Kimminkyum0212_PlayerController : MonoBehaviour
 
     }
 
-    //ÇÃ·¹ÀÌ¾î°¡ ÇÊµå¸¦ ¹þ¾î³¯ ½Ã ÀÏÁ¤ ½Ã°£ ÈÄ ÆÐ¹è
-    //½Ã°£ ³»·Î º¹±ÍÇÏ¸é ÇÃ·¹ÀÌ ÁøÇà
+    //ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Êµå¸¦ ï¿½ï¿½ï¿½î³¯ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ ï¿½Ð¹ï¿½
+    //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Limit"))
@@ -120,7 +120,7 @@ public class Kimminkyum0212_PlayerController : MonoBehaviour
         }
     }
 
-    //ÇÃ·¹ÀÌ¾î°¡ ÇÊµå¸¦ ¹þ¾î³ª¸é 10ÃÊ°£ÀÇ ½Ã°£ ÈÄ °ÔÀÓ ÆÐ¹è
+    //ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Êµå¸¦ ï¿½ï¿½ï¿½î³ªï¿½ï¿½ 10ï¿½Ê°ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¹ï¿½
     IEnumerator OutofBounds()
     {
         yield return new WaitForSeconds(10);
