@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 998358625}
   - component: {fileID: 998358624}
   - component: {fileID: 998358623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -5684,6 +5684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RushBossEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3873177320849249521, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5697,6 +5701,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5013321318908479396, guid: 503b111c7b19dec45a5b6a01873ff7bc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8586863352727813562, guid: 503b111c7b19dec45a5b6a01873ff7bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.644
@@ -5741,6 +5749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBossEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9195407047507399379, guid: 503b111c7b19dec45a5b6a01873ff7bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5757,6 +5769,10 @@ PrefabInstance:
     - target: {fileID: 2912978008167620341, guid: ec0506089cb22914099963a24fd87289, type: 3}
       propertyPath: m_Name
       value: BlackHoleBossEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912978008167620341, guid: ec0506089cb22914099963a24fd87289, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8125342554682195864, guid: ec0506089cb22914099963a24fd87289, type: 3}
       propertyPath: m_LocalPosition.x

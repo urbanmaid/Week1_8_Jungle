@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7258943768779498070}
   m_Layer: 3
   m_Name: BlackHoleBossEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  damage: 1
+  collisionDamage: 1
   pointEffector: {fileID: 0}
 --- !u!61 &6040117297721210441
 BoxCollider2D:

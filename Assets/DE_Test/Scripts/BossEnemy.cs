@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BossEnemy : MonoBehaviour
 {
     protected GameObject Player;
     public float moveSpeed = 1;
-    public int damage = 1;
+    public int collisionDamage = 1;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
@@ -27,6 +29,18 @@ public class BossEnemy : MonoBehaviour
             Vector2.MoveTowards(transform.position, Player.transform.position, moveSpeed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("@@DE ---> 적과 충돌!");
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.DamagePlayer(collisionDamage);
+            }
+        }
+    }
+    
     private void DespawnBossEnemy()
     {
         // Check isAbleToSpawn
