@@ -13,7 +13,6 @@ public class RushBossEnemy : BossEnemy
     protected override void Start()
     {
         base.Start();
-
         StartCoroutine(RushCoroutine());
     }
 
@@ -23,11 +22,11 @@ public class RushBossEnemy : BossEnemy
         {
             yield return new WaitForSeconds(rushDelay);
 
-            if (Player != null)
+            if (player != null)
             {
                 _isRushing = true;
                 var startPos = transform.position;
-                var targetPos = startPos + ((Player.transform.position - transform.position)).normalized * rushDistance;
+                var targetPos = startPos + ((player.transform.position - transform.position)).normalized * rushDistance;
 
                 // Rush
                 var elapsedTime = 0f;

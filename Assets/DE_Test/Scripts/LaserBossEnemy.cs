@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LaserBossEnemy : BossEnemy
 {
@@ -14,7 +15,7 @@ public class LaserBossEnemy : BossEnemy
     private Vector2 targetDirection;
     private float laserDistance;
 
-    public float fireRate = 3f;
+    [SerializeField] private float laserRate = 3f;
     private bool canFire = true;
 
     protected override void Start()
@@ -26,7 +27,7 @@ public class LaserBossEnemy : BossEnemy
     {
         base.Update();
 
-        if (canFire && Player != null)
+        if (canFire && player != null)
         {
             StartCoroutine(FireLaser());
         }
@@ -41,7 +42,7 @@ public class LaserBossEnemy : BossEnemy
     {
         canFire = false;
 
-        Vector2 targetPosition = Player.transform.position;
+        Vector2 targetPosition = player.transform.position;
         targetDirection = (targetPosition - (Vector2)transform.position).normalized;
         laserDistance = 0f;
 
@@ -75,7 +76,7 @@ public class LaserBossEnemy : BossEnemy
         Destroy(laser);
         laser = null;
 
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(laserRate);
         canFire = true;
     }
 

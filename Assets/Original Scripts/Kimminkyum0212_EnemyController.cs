@@ -3,7 +3,7 @@ using UnityEngine;
 public class Kimminkyum0212_EnemyController : MonoBehaviour
 {
     private Rigidbody2D enemyRb;
-    private GameObject player;
+    protected GameObject player;
     [SerializeField] bool isShootable = true;
 
     [Header("Enemy Info")]
@@ -22,7 +22,7 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
     [Header("Item")]
     [SerializeField] ItemSpawnTimeManager itemSpawnTimeManager;
 
-    void Start()
+    protected virtual void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
