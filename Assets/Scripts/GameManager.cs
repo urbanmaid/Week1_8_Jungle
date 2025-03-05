@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
-        if(damage > 0){
+        if(damage > 0 && !player.GetComponent<PlayerController>().isShielded){
             cameraController.ShakeCamera();
         }
         curHealth -= damage;

@@ -115,7 +115,7 @@ public class EnemyController : MonoBehaviour
 
    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && canDamage){
+        if(collision.CompareTag("Player") && canDamage && !player.GetComponent<PlayerController>().isShielded){
             canDamage = false;
             gm.DamagePlayer(collisionDamage);
             //StartCoroutine("WaitCo");

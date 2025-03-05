@@ -16,30 +16,38 @@ public class RushBossEnemy : BossEnemy
         StartCoroutine(RushCoroutine());
     }
 
+  
+
     private IEnumerator RushCoroutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(rushDelay);
-
-            if (player != null)
+            if (gm.isPlaying)
             {
-                _isRushing = true;
-                var startPos = transform.position;
-                var targetPos = startPos + ((player.transform.position - transform.position)).normalized * rushDistance;
+                yield return new WaitForSeconds(rushDelay);
 
-                // Rush
-                var elapsedTime = 0f;
-                while (elapsedTime < rushDistance / rushSpeed)
+                if (player != null)
                 {
-                    transform.position = Vector2.Lerp(startPos, targetPos, elapsedTime / (rushDistance / rushSpeed));
-                    elapsedTime += Time.deltaTime;
-                    yield return null;
-                }
+                    _isRushing = true;
+                    var startPos = transform.position;
+                    var targetPos = startPos + ((player.transform.position - transform.position)).normalized * rushDistance;
 
-                transform.position = targetPos;
-                _isRushing = false;
+                    // Rush
+                    var elapsedTime = 0f;
+                    while (elapsedTime < rushDistance / rushSpeed)
+                    {
+                        transform.position = Vector2.Lerp(startPos, targetPos, elapsedTime / (rushDistance / rushSpeed));
+                        elapsedTime += Time.deltaTime;
+                        yield return null;
+                    }
+
+                    transform.position = targetPos;
+                    _isRushing = false;
+                }
+            } else {
+                break;
             }
+
         }
     }
 }

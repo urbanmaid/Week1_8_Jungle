@@ -2258,15 +2258,15 @@ MonoBehaviour:
     direction of attack
 
 
-    LMB - Shoots default bullet
+    LMB - Holding shoots default bullet
 
 
-    RMB - Holds and shoots
-    missile that cleans out enemies
+    RMB - Holds
+    and shoots missile that cleans out enemies
 
 
-    Collect Items and Eliminate Bosses to get
-    higher score!'
+    Collect Items and Eliminate
+    Bosses to get higher score!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
