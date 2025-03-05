@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class LaserBossEnemy : BossEnemy
 {
@@ -98,6 +97,14 @@ public class LaserBossEnemy : BossEnemy
 
             var angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             laser.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (laser != null)
+        {
+            Destroy(laser);
         }
     }
 }
