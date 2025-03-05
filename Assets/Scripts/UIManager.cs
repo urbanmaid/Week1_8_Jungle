@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private float time;
     private int min;
     private int sec;
-    
+
     [Header("Score Evaluation")]
     [SerializeField] int scoreCutAmateur = 250;
     [SerializeField] int scoreCutIntermediate = 500;
@@ -89,8 +89,12 @@ public class UIManager : MonoBehaviour
 
     public void Upgrade()
     {
-        gm.isPlaying = false;
-        upgradePanel.SetActive(true);
+        if (gm.isPlaying)
+        {
+            gm.isPlaying = false;
+            upgradePanel.SetActive(true);
+        }
+
     }
 
     public void UpgradeChoice(int upgradeCode)
@@ -131,20 +135,24 @@ public class UIManager : MonoBehaviour
         scoreTextGameOver.text = "" + gm.totalScore;
     }
 
-  
-    
+
+
     private void EvaulateScore()
-	  {
-        if(gm.totalScore < scoreCutAmateur){
+    {
+        if (gm.totalScore < scoreCutAmateur)
+        {
             gameoverEvalText.text = quoteRookie;
         }
-        else if(gm.totalScore < scoreCutIntermediate){
+        else if (gm.totalScore < scoreCutIntermediate)
+        {
             gameoverEvalText.text = quoteAmateur;
         }
-        else if(gm.totalScore < scoreCutPro){
+        else if (gm.totalScore < scoreCutPro)
+        {
             gameoverEvalText.text = quoteIntermediate;
         }
-        else{
+        else
+        {
             gameoverEvalText.text = quotePro;
         }
     }
@@ -155,7 +163,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
-    public void ExitGame(){
+    public void ExitGame()
+    {
         Application.Quit();
     }
 }
