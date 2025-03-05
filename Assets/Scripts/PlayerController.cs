@@ -178,7 +178,8 @@ public class PlayerController : MonoBehaviour
     public void GravityShot()
     {
         Debug.Log("shot gravity shot");
-        Instantiate(gravityShot, transform.position, shooter.transform.rotation);
+        GameObject gravShot = Instantiate(gravityShot, transform.position, shooter.transform.rotation);
+        gravShot.transform.localScale *= skillPower;
     }
 
     public void Charge()
@@ -193,7 +194,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ChargeCo()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f * skillPower);
         isChargeing = false;
         curSpeed = moveSpeed;
     }
@@ -210,7 +211,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ShieldCo()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f * skillPower);
         isShielded = false;
         shield.SetActive(false);
     }

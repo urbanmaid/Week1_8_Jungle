@@ -13,6 +13,7 @@ public class BossEnemy : EnemyController
     protected override void Start()
     {
         base.Start();
+        gm.player.GetComponent<PlayerInterfaceController>().SetBossObject(gameObject);
     }
 
     protected virtual void Update()
@@ -43,6 +44,7 @@ public class BossEnemy : EnemyController
             Destroy(gameObject);
             GameManager.instance.IncreaseScore(enemyScore);
             UIManager.instance.Upgrade();
+            gm.player.GetComponent<PlayerInterfaceController>().SetBossNotifier(false);
         }
 
         if (!GameManager.instance.isPlaying)

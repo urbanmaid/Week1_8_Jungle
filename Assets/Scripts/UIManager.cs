@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     private float time;
     private int min;
     private int sec;
-
+    public int lvl;
     void Awake()
     {
         if (instance == null)
@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
         time = 0;
         min = 0;
         sec = 0;
-
     }
 
     void Update()
