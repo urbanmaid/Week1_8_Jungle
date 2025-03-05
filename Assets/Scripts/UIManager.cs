@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
-        timerText.text = "0:00";
+        timerText.text = "00:00";
         time = 0;
         min = 0;
         sec = 0;

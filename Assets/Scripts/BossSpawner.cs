@@ -6,8 +6,8 @@ public class BossSpawner : MonoBehaviour
     [Header("Generic")]
     [SerializeField] List<GameObject> bossList;
     private GameObject player;
-    internal Kimminkyum0212_PlayerController pc;
-    private Kimminkyum0212_GameManager gm;
+    internal PlayerController pc;
+    private GameManager gm;
     public bool isBossSpawned = false;
 
     [Header("Timing Control")]
@@ -22,8 +22,8 @@ public class BossSpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pc = player.GetComponent<Kimminkyum0212_PlayerController>();
-        gm = GameObject.Find("Game Manager").GetComponent<Kimminkyum0212_GameManager>();
+        pc = player.GetComponent<PlayerController>();
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
