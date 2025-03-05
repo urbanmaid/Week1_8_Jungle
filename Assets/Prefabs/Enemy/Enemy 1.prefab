@@ -230,6 +230,8 @@ MonoBehaviour:
   collisionDamage: 3
   projectile: {fileID: 0}
   fireRate: 0
+  range: 7.5
+  enemyScore: 1
   itemSpawnTimeManager: {fileID: 0}
 --- !u!61 &6520931804217857312
 BoxCollider2D:

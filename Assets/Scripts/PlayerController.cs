@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public float launchSpeed = 5f;
 
     [Header("Skills")]
+    [HideInInspector] public float skillPower = 1;
     public float ChargeTime = 1.5f;
     public GameObject gravityShot;
     [SerializeField] bool isChargeing;
@@ -61,60 +62,62 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 worldPos = mainCam.WorldToScreenPoint(transform.localPosition);
-        Vector2 offset = new Vector2(mousePos.x - worldPos.x, mousePos.y - worldPos.y);
-        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        shooter.transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (gm.isPlaying)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 worldPos = mainCam.WorldToScreenPoint(transform.localPosition);
+            Vector2 offset = new Vector2(mousePos.x - worldPos.x, mousePos.y - worldPos.y);
+            float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+            shooter.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        transform.Translate(moveDir.normalized * Mathf.Lerp(0, curSpeed, 0.5f) * Time.deltaTime, Space.World);
-        if (coolDown > 0)
-        {
-            coolDown -= Time.deltaTime;
-        }
-        else
-        {
-            if (Input.GetMouseButton(0))
+            Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            transform.Translate(moveDir.normalized * Mathf.Lerp(0, curSpeed, 0.5f) * Time.deltaTime, Space.World);
+            if (coolDown > 0)
             {
-                Shoot();
-
+                coolDown -= Time.deltaTime;
             }
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            if (_currentProjectile != null)
+            else
             {
-                RotateProjectile();
-            }
-        }
+                if (Input.GetMouseButton(0))
+                {
+                    Shoot();
 
-        if (Input.GetMouseButtonDown(1) && _currentProjectile == null)
-        {
-            if (gm.missileAmount > 0)
-            {
-                _rotateDirection = -1;
-                SpawnProjectile();
-                gm.missileAmount -= 1;
+                }
             }
 
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            if (_currentProjectile != null)
+            if (Input.GetMouseButton(1))
             {
-                // Launch current projectile
-                LaunchProjectile();
+                if (_currentProjectile != null)
+                {
+                    RotateProjectile();
+                }
+            }
+
+            if (Input.GetMouseButtonDown(1) && _currentProjectile == null)
+            {
+                if (gm.missileAmount > 0)
+                {
+                    _rotateDirection = -1;
+                    SpawnProjectile();
+                }
 
             }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                if (_currentProjectile != null)
+                {
+                    // Launch current projectile
+                    LaunchProjectile();
+
+                }
+            }
+
+        
+        } else {
+            playerRb.linearVelocity = Vector2.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            GravityShot();
-        }
 
         // if (Input.GetKeyDown(KeyCode.Alpha2) && !isChargeing)
         // {
@@ -139,6 +142,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_currentProjectile == null)
         {
+            gm.missileAmount -= 1;
+            UIManager.instance.UpdateMissile();
             Vector3 spawnPos = transform.position + Vector3.up * spawnDistance;
 
             _currentProjectile = Instantiate(missilePrefab, spawnPos, Quaternion.identity);
@@ -216,21 +221,6 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyController>().Damage(10f);
         }
-        else if (collision.gameObject.CompareTag("Enemy Range"))
-        {
-            EnemyController enemy = collision.gameObject.GetComponentInParent<EnemyController>();
-            enemy.inRange = true;
-        }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy Range"))
-        {
-            EnemyController enemy = collision.gameObject.GetComponentInParent<EnemyController>();
-            enemy.inRange = false;
-        }
-    }
-
 
 }

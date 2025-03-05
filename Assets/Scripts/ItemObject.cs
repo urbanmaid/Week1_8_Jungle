@@ -53,6 +53,7 @@ public class ItemObject : MonoBehaviour
             case 1:
                 gm.missileAmount += this.missileAmount;
                 Debug.Log("Missile amount has been increased into " + missileAmount);
+                UIManager.instance.UpdateMissile();
                 break;
             case 2:
                 Debug.Log("Skill item activated.");

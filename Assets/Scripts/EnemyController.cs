@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    GameManager gm;
+    protected GameManager gm;
     private Rigidbody2D enemyRb;
     protected GameObject player;
     [SerializeField] bool isShootable = true;
@@ -19,7 +20,9 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
     private bool canDamage;
 
-    [SerializeField] private int enemyScore = 1;
+    [SerializeField] float range;
+
+    [SerializeField] protected int enemyScore = 1;
 
     // [Header("Projectile Info")]
     // public float damage;
@@ -49,6 +52,8 @@ public class EnemyController : MonoBehaviour
             Vector2 moveDir = player.transform.position - transform.position;
             float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+            float distance = Vector2.Distance(player.transform.position, transform.position);
+            inRange = distance < range;
             if (isShootable)
             {
                 if (!inRange)
@@ -80,7 +85,7 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void Damage(float dmgAmount)
+    public virtual void Damage(float dmgAmount)
     {
         health -= dmgAmount;
         if (health <= 0)

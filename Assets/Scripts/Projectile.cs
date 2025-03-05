@@ -14,8 +14,15 @@ public class Projectile : MonoBehaviour
         theRb.linearVelocity = transform.right * projectileSpeed;
     }
 
+    // void Update()
+    // {
+    //     if(!rend.isVisible){
+    //         Destroy(gameObject);
+    //     }
+    // }
     void OnBecameInvisible()
     {
+        Debug.Log("Not Visible");
         Destroy(gameObject);
     }
 

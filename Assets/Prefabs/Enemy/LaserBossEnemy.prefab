@@ -101,13 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd8f52fd73ffb74195bdf6144b99d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isShootable: 1
+  isShootable: 0
   health: 10
   moveSpeed: 1
   inRange: 0
   collisionDamage: 1
   projectile: {fileID: 0}
   fireRate: 3
+  range: 20
   enemyScore: 100
   itemSpawnTimeManager: {fileID: 0}
   bossMoveSpeed: 1

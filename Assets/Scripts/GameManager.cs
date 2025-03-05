@@ -9,12 +9,13 @@ public class GameManager : MonoBehaviour
     [Header("Game Mechanic")]
     public GameObject player;
     public float maxHealth;
-    private float curHealth;
+    public float curHealth;
     public bool isPlaying;
     public int missileAmount;
-    private bool paused;
+    
+    public GameObject managers;
 
-    [SerializeField] private int totalScore = 0;
+    [HideInInspector] public int totalScore = 0;
     
     private void Awake()
     {
@@ -47,19 +48,20 @@ public class GameManager : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         curHealth -= damage;
-        // UpdateSlider(curHealth);
+        UIManager.instance.UpdateHealth();
+
         if (curHealth <= 0)
         {
             isPlaying = false;
             player.SetActive(false);
-            // playScreen.SetActive(false);
-            // gameoverScreen.SetActive(true);
+            UIManager.instance.EndGame();
+            
         }
         else if(curHealth > maxHealth)
         {
             Debug.Log("Health Overflow detected, resetting health to max.");
             curHealth = maxHealth;
-            // UpdateSlider(curHealth);
+            
         }
     }
 
@@ -69,11 +71,13 @@ public class GameManager : MonoBehaviour
         {
             totalScore++;
             yield return new WaitForSeconds(1.0f);
+            UIManager.instance.UpdateScore();
         }
     }
 
     public void IncreaseScore(int score)
     {
         totalScore += score;
+        UIManager.instance.UpdateScore();
     }
 }
