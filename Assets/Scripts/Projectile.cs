@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Projectile : MonoBehaviour
 {
@@ -6,6 +8,8 @@ public class Projectile : MonoBehaviour
     public float projectileSpeed;
     private SpriteRenderer rend;
     public float damage;
+    
+    [SerializeField] private GameObject projectileParticle;
 
     void Start()
     {
@@ -25,6 +29,7 @@ public class Projectile : MonoBehaviour
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             enemy.Damage(damage);
+            SpawnParticles();
             Destroy(gameObject);
         }
         else if (gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
@@ -37,5 +42,10 @@ public class Projectile : MonoBehaviour
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             enemy.Damage(damage);
         }
+    }
+
+    private void SpawnParticles()
+    {
+        var particles = Instantiate(projectileParticle, transform.position, Quaternion.identity);
     }
 }
