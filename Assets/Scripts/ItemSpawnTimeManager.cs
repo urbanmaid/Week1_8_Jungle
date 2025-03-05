@@ -11,7 +11,8 @@ public class ItemSpawnTimeManager : MonoBehaviour
     private float timeSinceLastSpawn = 0f;
     [SerializeField] float spawnInterval = 30f;
     [SerializeField] bool isAbleToSpawn = false; // If true, enemy has able to spawn item when they are dead
-    
+    [SerializeField] bool isSpawned = false; // If true, item is not spawned anymore
+
     [Header("Generic")]
     public List<GameObject> itemList;
 
@@ -23,7 +24,7 @@ public class ItemSpawnTimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isAbleToSpawn){
+        if(!isAbleToSpawn && !isSpawned){ // If enemy is dead and item should not be spawned before
             timeSinceLastSpawn += Time.deltaTime;
             if (timeSinceLastSpawn >= spawnInterval)
             {
@@ -42,7 +43,12 @@ public class ItemSpawnTimeManager : MonoBehaviour
         isAbleToSpawn = value;
     }
 
+    public void SetIsSpawned(bool value){
+        isSpawned = value;
+    }
+
     public GameObject SpawnItem(){
+        isSpawned = true;
         return itemList[Random.Range(0, itemList.Count)];
     }
 }

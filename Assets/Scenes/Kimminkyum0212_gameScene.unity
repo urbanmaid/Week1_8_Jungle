@@ -11988,11 +11988,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f469313c800f44a42994abd15abf5b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 10
+  spawnInterval: 40
   isAbleToSpawn: 0
+  isSpawned: 0
   itemList:
   - {fileID: 572938174624973367, guid: 65b3036f11b92c74c8b7d3fbfcf63075, type: 3}
   - {fileID: 236536555064978548, guid: 0364fa43efaaa6c47bef52284287ee4e, type: 3}
+  - {fileID: 6822038983473570202, guid: ecbf829b7806d7145ac1301dc20d0deb, type: 3}
 --- !u!4 &2035187696
 Transform:
   m_ObjectHideFlags: 0
