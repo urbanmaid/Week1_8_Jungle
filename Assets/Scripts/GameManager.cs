@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
     [SerializeField] private CameraController cameraController;
+    public BossSpawner bossSpawnManager;
+
     
     [Header("Game Mechanic")]
     public GameObject player;
