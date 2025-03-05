@@ -14,7 +14,8 @@ public class LaserBossEnemy : BossEnemy
     private Vector2 targetDirection;
     private float laserDistance;
 
-    public float fireRate = 3f;
+    [SerializeField] private float laserRate = 3f;
+    [SerializeField] private float laserRange = 8f;
     private bool canFire = true;
 
     protected override void Start()
@@ -26,9 +27,13 @@ public class LaserBossEnemy : BossEnemy
     {
         base.Update();
 
-        if (canFire && Player != null)
+        if (canFire && player != null)
         {
-            StartCoroutine(FireLaser());
+            var distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance <= laserRange)
+            {
+                StartCoroutine(FireLaser());
+            }
         }
 
         if (laser != null)
@@ -41,7 +46,7 @@ public class LaserBossEnemy : BossEnemy
     {
         canFire = false;
 
-        Vector2 targetPosition = Player.transform.position;
+        Vector2 targetPosition = player.transform.position;
         targetDirection = (targetPosition - (Vector2)transform.position).normalized;
         laserDistance = 0f;
 
@@ -75,7 +80,7 @@ public class LaserBossEnemy : BossEnemy
         Destroy(laser);
         laser = null;
 
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(laserRate);
         canFire = true;
     }
 
@@ -97,6 +102,14 @@ public class LaserBossEnemy : BossEnemy
 
             var angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             laser.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (laser != null)
+        {
+            Destroy(laser);
         }
     }
 }
