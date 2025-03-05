@@ -4,16 +4,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
-    
+
     [Header("Game Mechanic")]
     public GameObject player;
     public float maxHealth;
-    private float curHealth;
+    [HideInInspector] public float curHealth;
     public bool isPlaying;
     public int missileAmount;
     private bool paused;
 
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void DamagePlayer(float damage)
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             // playScreen.SetActive(false);
             // gameoverScreen.SetActive(true);
         }
-        else if(curHealth > maxHealth)
+        else if (curHealth > maxHealth)
         {
             Debug.Log("Health Overflow detected, resetting health to max.");
             curHealth = maxHealth;
