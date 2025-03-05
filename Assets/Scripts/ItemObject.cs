@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public int itemCode; 
+    public int itemCode;
     /* 
     Item Code: 
     0 for Heal
@@ -14,6 +14,7 @@ public class ItemObject : MonoBehaviour
     private GameManager gm;
     private ItemSpawnTimeManager itemSpawnTimeManager;
     private PlayerController playerController;
+    private PlayerInterfaceController playerInterfaceController;
 
     [SerializeField] float healMount = 10f;
     [SerializeField] int missileAmount = 5;
@@ -23,6 +24,9 @@ public class ItemObject : MonoBehaviour
         gm = GameManager.instance;
         itemSpawnTimeManager = ItemSpawnTimeManager.instance;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerInterfaceController = GameObject.Find("Player").GetComponent<PlayerInterfaceController>();
+
+        playerInterfaceController.SetItemObject(gameObject);
     }
 
     // Update is called once per frame
@@ -39,6 +43,9 @@ public class ItemObject : MonoBehaviour
             ItemEffect();
             itemSpawnTimeManager.SetIsSpawned(false); // Reset status of isSpawned
             Destroy(gameObject);
+
+            // Disable item notifier due to item has been picked up
+            playerInterfaceController.SetItemNotifier(false);
         }
     }
 

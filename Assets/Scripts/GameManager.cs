@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
+    [SerializeField] private CameraController cameraController;
     
     [Header("Game Mechanic")]
     public GameObject player;
@@ -47,6 +48,9 @@ public class GameManager : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
+        if(damage > 0){
+            cameraController.ShakeCamera();
+        }
         curHealth -= damage;
         UIManager.instance.UpdateHealth();
 
