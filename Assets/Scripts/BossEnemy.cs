@@ -39,6 +39,7 @@ public class BossEnemy : EnemyController
         health -= dmgAmount;
         if (health <= 0)
         {
+            GameManager.instance.bossSpawnManager.enableBossSpawn();
             Destroy(gameObject);
             GameManager.instance.IncreaseScore(enemyScore);
             UIManager.instance.Upgrade();
@@ -60,12 +61,5 @@ public class BossEnemy : EnemyController
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         transform.position =
             Vector2.MoveTowards(transform.position, player.transform.position, bossMoveSpeed * Time.deltaTime);
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.instance.bossSpawnManager.enableBossSpawn();
-        // PlayerInterfaceController.SetBossObject
-
     }
 }
