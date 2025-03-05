@@ -2013,7 +2013,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1261262681}
   startPanel: {fileID: 1834075058}
   upgradePanel: {fileID: 136285773}
-  endPanel: {fileID: 1651636771}
+  endPanel: {fileID: 1557311812}
   gameInfo: {fileID: 292059490}
   moveLvl: 0
   attackLvl: 0
@@ -2479,7 +2479,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 576892491}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: EndGame
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
