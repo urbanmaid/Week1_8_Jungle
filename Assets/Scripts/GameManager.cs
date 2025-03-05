@@ -5,11 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
+    [SerializeField] private CameraController cameraController;
     
     [Header("Game Mechanic")]
     public GameObject player;
     public float maxHealth;
-    private float curHealth;
+    public float curHealth;
     public bool isPlaying;
     public int missileAmount;
     private bool paused;
@@ -46,6 +47,9 @@ public class GameManager : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
+        if(damage > 0){
+            cameraController.ShakeCamera();
+        }
         curHealth -= damage;
         // UpdateSlider(curHealth);
         if (curHealth <= 0)
