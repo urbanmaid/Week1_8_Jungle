@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
+    public BossSpawner bossSpawnManager;
     
     [Header("Game Mechanic")]
     public GameObject player;

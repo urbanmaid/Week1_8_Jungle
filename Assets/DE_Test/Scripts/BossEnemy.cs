@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BossEnemy : EnemyController
 {
@@ -16,7 +14,12 @@ public class BossEnemy : EnemyController
 
     protected virtual void Update()
     {
-        if (player == null)
+        if (!GameManager.instance.isPlaying)
+        {
+            return;
+        }
+
+        if (!player)
         {
             return;
         }
@@ -29,5 +32,9 @@ public class BossEnemy : EnemyController
             Vector2.MoveTowards(transform.position, player.transform.position, bossMoveSpeed * Time.deltaTime);
     }
 
-
+    private void OnDestroy()
+    {
+        GameManager.instance.bossSpawnManager.enableBossSpawn();
+        // PlayerInterfaceController.SetBossObject
+    }
 }
