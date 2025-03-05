@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     GameManager gm;
     private Rigidbody2D enemyRb;
-    private GameObject player;
+    protected GameObject player;
     [SerializeField] bool isShootable = true;
 
     [Header("Enemy Info")]
@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
     public bool inRange;
 
-    [SerializeField] float collisionDamage;
+    [SerializeField] protected float collisionDamage;
     [SerializeField] GameObject projectile;
     private float cooldown;
     public float fireRate;
@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
     [Header("Item")]
     [SerializeField] ItemSpawnTimeManager itemSpawnTimeManager;
 
-    void Start()
+    protected virtual void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");

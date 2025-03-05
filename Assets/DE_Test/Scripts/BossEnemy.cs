@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class BossEnemy : Kimminkyum0212_EnemyController
+public class BossEnemy : EnemyController
 {
     [Header("Boss Enemy")]
     public float bossMoveSpeed = 1;
-    public int collisionDamage = 1;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -29,21 +29,5 @@ public class BossEnemy : Kimminkyum0212_EnemyController
             Vector2.MoveTowards(transform.position, player.transform.position, bossMoveSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("@@DE ---> 적과 충돌!");
-            if (GameManager.instance != null)
-            {
-                GameManager.instance.DamagePlayer(collisionDamage);
-            }
-        }
-    }
-    
-    private void DespawnBossEnemy()
-    {
-        // Check isAbleToSpawn
-        // Spawn Item
-    }
+
 }
