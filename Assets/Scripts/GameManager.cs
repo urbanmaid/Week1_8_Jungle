@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int missileAmount;
     private bool paused;
 
+    [SerializeField] private int totalScore = 0;
     
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         curHealth = maxHealth;
         missileAmount = 0;
+
+        StartCoroutine(IncreaseScore());
     }
 
     // Update is called once per frame
@@ -57,5 +61,19 @@ public class GameManager : MonoBehaviour
             curHealth = maxHealth;
             // UpdateSlider(curHealth);
         }
+    }
+
+    private IEnumerator IncreaseScore()
+    {
+        while (isPlaying)
+        {
+            totalScore++;
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    public void IncreaseScore(int score)
+    {
+        totalScore += score;
     }
 }

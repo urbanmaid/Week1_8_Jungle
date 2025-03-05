@@ -125,6 +125,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -4965580772673850261, guid: ae3bfe83c7c508d40a43a19dcaa4a789, type: 3}
+      propertyPath: enemyScore
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4965580772673850261, guid: ae3bfe83c7c508d40a43a19dcaa4a789, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 5344438850300829464, guid: 0aaf5d73385cd3e429e3a5adefd2edd3, type: 3}
