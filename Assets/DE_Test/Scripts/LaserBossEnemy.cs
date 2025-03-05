@@ -27,6 +27,11 @@ public class LaserBossEnemy : BossEnemy
     {
         base.Update();
 
+        if (!GameManager.instance.isPlaying)
+        {
+            return;
+        }
+        
         if (canFire && player != null)
         {
             var distance = Vector2.Distance(transform.position, player.transform.position);
