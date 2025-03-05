@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Health Overflow detected, resetting health to max.");
             curHealth = maxHealth;
-            
         }
     }
 

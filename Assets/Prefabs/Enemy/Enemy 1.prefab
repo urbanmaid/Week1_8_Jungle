@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShootable: 0
-  health: 10
+  health: 4
   moveSpeed: 3
   inRange: 0
   collisionDamage: 3

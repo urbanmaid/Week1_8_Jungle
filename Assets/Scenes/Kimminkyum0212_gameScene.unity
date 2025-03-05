@@ -3884,8 +3884,10 @@ MonoBehaviour:
   - {fileID: 3873177320849249521, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
   - {fileID: 2912978008167620341, guid: ec0506089cb22914099963a24fd87289, type: 3}
   isBossSpawned: 0
-  spawnInterval: 35
+  spawnInterval: 30
   distFromPlayerToEnemy: 30
+  bossLifeInit: 10
+  bossSpawnedCount: 0
 --- !u!1 &990195343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4727,7 +4729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e90e327127a5243ab4f0107b2ed9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   shooter: {fileID: 1450055044}
   projectile: {fileID: 5296270854075526891, guid: 9e766f3da0323a64ca4f04221ab987fe, type: 3}
   fireRate: 0.5

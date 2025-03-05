@@ -113,12 +113,13 @@ public class EnemyController : MonoBehaviour
         Instantiate(projectile,transform.position, transform.rotation);        
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+   protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player") && canDamage){
             canDamage = false;
             gm.DamagePlayer(collisionDamage);
-            StartCoroutine("WaitCo");
+            //StartCoroutine("WaitCo");
+            Destroy(gameObject);
         }
     }
 

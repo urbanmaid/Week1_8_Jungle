@@ -64,4 +64,18 @@ public class BossEnemy : EnemyController
         transform.position =
             Vector2.MoveTowards(transform.position, player.transform.position, bossMoveSpeed * Time.deltaTime);
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player")){
+            gm.DamagePlayer(collisionDamage);
+            //StartCoroutine("WaitCo");            
+        }
+    }
+
+    internal void SetLife(float healthInput)
+    {
+        health = healthInput;
+        Debug.Log("Boss life: " + health);
+    }
 }
