@@ -44,7 +44,7 @@ public class RandomEnemySpawner : MonoBehaviour
                 SpawnEnemy();
                 timeSinceLastSpawn = 0f;
                 if(spawnIntervalMin != 0){
-                    Debug.Log("Next enemy will be spawned after: " + spawnInterval + " seconds");
+                    //Debug.Log("Next enemy will be spawned after: " + spawnInterval + " seconds");
                     spawnInterval = Mathf.Max(spawnIntervalMin, spawnInterval + spawnIntervalModScale);
                 }
             }
