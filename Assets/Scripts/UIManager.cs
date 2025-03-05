@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
     public void EndGame()
     {
         gameInfo.SetActive(false);
+        gm.isPlaying = false;
         EvaulateScore();
         endPanel.SetActive(true);
         scoreTextGameOver.text = "" + gm.totalScore;
