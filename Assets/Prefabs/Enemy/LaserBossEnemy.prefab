@@ -111,13 +111,14 @@ MonoBehaviour:
   scale: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
   itemSpawnTimeManager: {fileID: 0}
-  moveSpeed: 1
+  bossMoveSpeed: 1
   collisionDamage: 1
   laserPrefab: {fileID: 5702909733206541825, guid: aa85fe4968c861d40ad286ef2f223a67, type: 3}
   growSpeed: 3
   laserDuration: 1.5
   maxLaserDistance: 20
-  fireRate: 3
+  laserRate: 3
+  laserRange: 8
 --- !u!61 &5013321318908479396
 BoxCollider2D:
   m_ObjectHideFlags: 0

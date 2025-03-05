@@ -15,6 +15,7 @@ public class LaserBossEnemy : BossEnemy
     private float laserDistance;
 
     [SerializeField] private float laserRate = 3f;
+    [SerializeField] private float laserRange = 8f;
     private bool canFire = true;
 
     protected override void Start()
@@ -28,7 +29,11 @@ public class LaserBossEnemy : BossEnemy
 
         if (canFire && player != null)
         {
-            StartCoroutine(FireLaser());
+            var distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance <= laserRange)
+            {
+                StartCoroutine(FireLaser());
+            }
         }
 
         if (laser != null)
