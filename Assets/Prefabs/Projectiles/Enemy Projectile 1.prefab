@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4703038181424962017}
   - component: {fileID: 4931290202394574219}
   - component: {fileID: 4275179364496464481}
-  - component: {fileID: 1442995059390582962}
+  - component: {fileID: -232734920491095061}
   m_Layer: 0
   m_Name: Enemy Projectile 1
   m_TagString: Enemy Projectile
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1442995059390582962
+--- !u!114 &-232734920491095061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5344438850300829464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27b3e39238636343a49938c6015e370, type: 3}
+  m_Script: {fileID: 11500000, guid: 38ed3c7ab02215f4481870e95af9139e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 7.5

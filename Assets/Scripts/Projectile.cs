@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Projectile : Kimminkyum0212_Poolable
+public class Projectile : MonoBehaviour
 {
     private Rigidbody2D theRb;
     public float projectileSpeed;
@@ -14,25 +14,28 @@ public class Projectile : Kimminkyum0212_Poolable
         theRb.linearVelocity = transform.right * projectileSpeed;
     }
 
-    private void Update()
+    void OnBecameInvisible()
     {
-        if (!rend.isVisible)
-        {
-           Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.CompareTag("Player Projectile") && collision.gameObject.CompareTag("Enemy"))
         {
-            Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>();
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             enemy.Damage(damage);
             Destroy(gameObject);
-        } else if(gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
+        }
+        else if (gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
         {
-            Kimminkyum0212_GameManager.instance.DamagePlayer(damage);
+            GameManager.instance.DamagePlayer(damage);
             Destroy(gameObject);
+        }
+        else if (gameObject.CompareTag("Missile Projectile") && collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            enemy.Damage(damage);
         }
     }
 }

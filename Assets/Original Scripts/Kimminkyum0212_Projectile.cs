@@ -36,7 +36,7 @@ public class Kimminkyum0212_Projectile : Kimminkyum0212_Poolable
         }
         else if (gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
         {
-            if (!collision.GetComponent<PlayerController>().isInvisible)
+            if (!collision.GetComponent<PlayerController>().isShielded)
             {
                 GameManager.instance.DamagePlayer(damage);
                 ReleaseObject();

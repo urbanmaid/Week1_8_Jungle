@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Kimminkyum0212_EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     GameManager gm;
     private Rigidbody2D enemyRb;
@@ -119,3 +119,4 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
         canDamage = true;
     }
 }
+

@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager gm;
+
     [Header("Components")]
     private Collider2D coll;
     private SpriteRenderer rend;
@@ -15,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float curSpeed;
     private Camera mainCam;
     public GameObject shooter;
-    
+
 
     [Header("Basic Projectile")]
     public GameObject projectile;
@@ -35,22 +38,23 @@ public class PlayerController : MonoBehaviour
     public float launchSpeed = 5f;
 
     [Header("Skills")]
-    public float dashTime = 1.5f;
+    public float ChargeTime = 1.5f;
     public GameObject gravityShot;
-    [SerializeField] bool isDashing;
-    public bool isInvisible;
+    [SerializeField] bool isChargeing;
+    public bool isShielded;
 
     public GameObject shield;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gm = GameManager.instance;
         coolDown = 0;
         playerRb = gameObject.GetComponent<Rigidbody2D>();
         mainCam = Camera.main;
-        isDashing = false;
+        isChargeing = false;
         curSpeed = moveSpeed;
         coll = GetComponent<Collider2D>();
-        rend = GetComponent<SpriteRenderer >();
+        rend = GetComponent<SpriteRenderer>();
     }
 
 
@@ -86,10 +90,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && _currentProjectile == null)
         {
-            _rotateDirection = -1;
-            SpawnProjectile();
+            if (gm.missileAmount > 0)
+            {
+                _rotateDirection = -1;
+                SpawnProjectile();
+                gm.missileAmount -= 1;
+            }
+
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -107,17 +116,17 @@ public class PlayerController : MonoBehaviour
             GravityShot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && !isDashing)
-        {
-            Dash();
+        // if (Input.GetKeyDown(KeyCode.Alpha2) && !isChargeing)
+        // {
+        //     Charge();
 
-        }
+        // }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && !isInvisible)
-        {
-            Invisible();
+        // if (Input.GetKeyDown(KeyCode.Alpha3) && !isShielded)
+        // {
+        //     Shield();
 
-        }
+        // }
     }
 
     void Shoot()
@@ -147,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchProjectile()
     {
-        // _currentProjectile.tag = "Projectile";
+        _currentProjectile.tag = "Missile Projectile";
 
         var direction = (_currentProjectile.transform.position - transform.position).normalized;
         var rb = _currentProjectile.GetComponent<Rigidbody2D>();
@@ -161,45 +170,55 @@ public class PlayerController : MonoBehaviour
         _rotateDirection = 0;
     }
 
-    void GravityShot()
+    public void GravityShot()
     {
-        GameObject gShot = Instantiate(gravityShot, transform.position, shooter.transform.rotation);
+        Debug.Log("shot gravity shot");
+        Instantiate(gravityShot, transform.position, shooter.transform.rotation);
     }
 
-    void Dash()
+    public void Charge()
     {
-        isDashing = true;
-        curSpeed *= 4;
-        StartCoroutine("DashCo");
+        if (!isChargeing)
+        {
+            isChargeing = true;
+            curSpeed *= 4;
+            StartCoroutine("ChargeCo");
+        }
+
     }
-    IEnumerator DashCo()
+    IEnumerator ChargeCo()
     {
         yield return new WaitForSeconds(3f);
-        isDashing = false;
+        isChargeing = false;
         curSpeed = moveSpeed;
     }
 
-    void Invisible(){
-        isInvisible = true;
-        shield.SetActive(true);
-        StartCoroutine("InvisibleCo");
+    public void Shield()
+    {
+        if (!isShielded)
+        {
+            isShielded = true;
+            shield.SetActive(true);
+            StartCoroutine("ShieldCo");
+        }
+
     }
-    IEnumerator InvisibleCo()
+    IEnumerator ShieldCo()
     {
         yield return new WaitForSeconds(3f);
-        isInvisible = false;
+        isShielded = false;
         shield.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isDashing && collision.gameObject.CompareTag("Enemy"))
+        if (isChargeing && collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>().Damage(10f);
+            collision.gameObject.GetComponent<EnemyController>().Damage(10f);
         }
         else if (collision.gameObject.CompareTag("Enemy Range"))
         {
-            Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponentInParent<Kimminkyum0212_EnemyController>();
+            EnemyController enemy = collision.gameObject.GetComponentInParent<EnemyController>();
             enemy.inRange = true;
         }
     }
@@ -208,7 +227,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Range"))
         {
-            Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponentInParent<Kimminkyum0212_EnemyController>();
+            EnemyController enemy = collision.gameObject.GetComponentInParent<EnemyController>();
             enemy.inRange = false;
         }
     }

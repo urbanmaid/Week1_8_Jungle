@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2674021515456094299}
   m_Layer: 0
   m_Name: MissileProto
-  m_TagString: Untagged
+  m_TagString: Missile Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 60273995
-  m_SortingLayer: 2
+  m_SortingLayerID: -2145527737
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,12 +99,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5820510208790133172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa4c44aa4e463394494318a08b5fb41e, type: 3}
+  m_Script: {fileID: 11500000, guid: 38ed3c7ab02215f4481870e95af9139e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  rend: {fileID: 0}
-  speed: 3
+  projectileSpeed: 7.5
+  damage: 20
 --- !u!50 &8864557930512207503
 Rigidbody2D:
   serializedVersion: 5

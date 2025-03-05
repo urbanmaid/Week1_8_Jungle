@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public float maxHealth;
     private float curHealth;
-    public int enemyCount;
     public bool isPlaying;
+    public int missileAmount;
     private bool paused;
 
     
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         curHealth = maxHealth;
+        missileAmount = 0;
     }
 
     // Update is called once per frame

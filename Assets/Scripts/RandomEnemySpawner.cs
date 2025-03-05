@@ -8,8 +8,8 @@ public class RandomEnemySpawner : MonoBehaviour
     [Header("Generic")]
     public List<GameObject> enemyList;
     private GameObject player;
-    internal Kimminkyum0212_PlayerController pc;
-    private Kimminkyum0212_GameManager gm;
+    internal PlayerController pc;
+    private GameManager gm;
 
     [Header("Timing Control")]
     private float timeSinceLastSpawn;
@@ -25,8 +25,8 @@ public class RandomEnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pc = player.GetComponent<Kimminkyum0212_PlayerController>();
-        gm = GameObject.Find("Game Manager").GetComponent<Kimminkyum0212_GameManager>();
+        pc = player.GetComponent<PlayerController>();
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     internal void SetIntervalMin(float spawnIntervalMinInput)

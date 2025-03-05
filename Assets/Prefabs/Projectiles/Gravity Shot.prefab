@@ -4863,7 +4863,7 @@ GameObject:
   - component: {fileID: 8846438682109805965}
   m_Layer: 0
   m_Name: Gravity Shot
-  m_TagString: Player Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4926,11 +4926,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 60273995
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2145527737
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

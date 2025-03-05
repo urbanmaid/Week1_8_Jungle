@@ -51,7 +51,7 @@ public class ItemObject : MonoBehaviour
                 Debug.Log("Health has been increased.");
                 break;
             case 1:
-                //gm.ChargeMissileAmount();
+                gm.missileAmount += this.missileAmount;
                 Debug.Log("Missile amount has been increased into " + missileAmount);
                 break;
             case 2:
@@ -68,23 +68,23 @@ public class ItemObject : MonoBehaviour
     {
         // Skill usage
         int skillMode = Random.Range(0, 3);
-
+     
         // Use skill based on skillMode
         switch (skillMode)
         {
             case 0:
                 Debug.Log("Gravity Shot has been used.");
-                //playerController.ItemGravityShot();
+                playerController.GravityShot();
                 break;
             case 1:
                 // Shield
                 Debug.Log("Shield has been used.");
-                //playerController.ItemShield();
+                playerController.Shield();
                 break;
             case 2:
                 // Charge
                 Debug.Log("Charge has been used.");
-                //playerController.ItemCharge();
+                playerController.Charge();
                 break;
             default:
                 Debug.LogError("Invalid skill mode detected, no effect applied.");
