@@ -9,6 +9,7 @@ TagManager:
   - Player Projectile
   - Enemy Projectile
   - Limit
+  - Missile Projectile
   layers:
   - Default
   - TransparentFX
