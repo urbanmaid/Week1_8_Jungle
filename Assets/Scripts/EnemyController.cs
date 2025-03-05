@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
     private bool canDamage;
 
+    [SerializeField] private int enemyScore = 1;
+
     // [Header("Projectile Info")]
     // public float damage;
     // public float projectileSpeed;
@@ -85,6 +87,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
             InstantiateItem(transform.position);
+            GameManager.instance.IncreaseScore(enemyScore);
         }
     }
 

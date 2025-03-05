@@ -105,14 +105,12 @@ MonoBehaviour:
   health: 10
   moveSpeed: 1
   inRange: 0
-  damage: 0
-  projectileSpeed: 0
+  collisionDamage: 1
+  projectile: {fileID: 0}
   fireRate: 3
-  scale: 0
-  projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  enemyScore: 100
   itemSpawnTimeManager: {fileID: 0}
   bossMoveSpeed: 1
-  collisionDamage: 1
   laserPrefab: {fileID: 5702909733206541825, guid: aa85fe4968c861d40ad286ef2f223a67, type: 3}
   growSpeed: 3
   laserDuration: 1.5

@@ -1,19 +1,21 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public RandomEnemySpawner spawnManager;
-
+    
     [Header("Game Mechanic")]
     public GameObject player;
     public float maxHealth;
-    [HideInInspector] public float curHealth;
+    private float curHealth;
     public bool isPlaying;
     public int missileAmount;
     private bool paused;
 
-
+    [SerializeField] private int totalScore = 0;
+    
     private void Awake()
     {
         if (instance == null)
@@ -32,12 +34,14 @@ public class GameManager : MonoBehaviour
     {
         curHealth = maxHealth;
         missileAmount = 0;
+
+        StartCoroutine(IncreaseScore());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void DamagePlayer(float damage)
@@ -51,11 +55,25 @@ public class GameManager : MonoBehaviour
             // playScreen.SetActive(false);
             // gameoverScreen.SetActive(true);
         }
-        else if (curHealth > maxHealth)
+        else if(curHealth > maxHealth)
         {
             Debug.Log("Health Overflow detected, resetting health to max.");
             curHealth = maxHealth;
             // UpdateSlider(curHealth);
         }
+    }
+
+    private IEnumerator IncreaseScore()
+    {
+        while (isPlaying)
+        {
+            totalScore++;
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    public void IncreaseScore(int score)
+    {
+        totalScore += score;
     }
 }
