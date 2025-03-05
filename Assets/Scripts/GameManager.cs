@@ -54,8 +54,7 @@ public class GameManager : MonoBehaviour
             cameraController.ShakeCamera();
         }
         curHealth -= damage;
-        UIManager.instance.UpdateHealth();
-
+        
         if (curHealth <= 0)
         {
             isPlaying = false;
@@ -68,6 +67,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Health Overflow detected, resetting health to max.");
             curHealth = maxHealth;
         }
+
+        UIManager.instance.UpdateHealth();
     }
 
     private IEnumerator IncreaseScore()
