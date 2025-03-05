@@ -18,7 +18,16 @@ public class UIManager : MonoBehaviour
     private float time;
     private int min;
     private int sec;
-    public int lvl;
+    
+    [Header("Score Evaluation")]
+    [SerializeField] int scoreCutAmateur = 250;
+    [SerializeField] int scoreCutIntermediate = 500;
+    [SerializeField] int scoreCutPro = 1000;
+    [SerializeField] TextMeshProUGUI gameoverEvalText;
+    [SerializeField] string quoteRookie;
+    [SerializeField] string quoteAmateur;
+    [SerializeField] string quoteIntermediate;
+    [SerializeField] string quotePro;
     void Awake()
     {
         if (instance == null)
@@ -116,8 +125,27 @@ public class UIManager : MonoBehaviour
     public void EndGame()
     {
         gameInfo.SetActive(false);
+        EvaulateScore();
         endPanel.SetActive(true);
         scoreTextGameOver.text = "" + gm.totalScore;
+    }
+
+  
+    
+    private void EvaulateScore()
+	  {
+        if(gm.totalScore < scoreCutAmateur){
+            gameoverEvalText.text = quoteRookie;
+        }
+        else if(gm.totalScore < scoreCutIntermediate){
+            gameoverEvalText.text = quoteAmateur;
+        }
+        else if(gm.totalScore < scoreCutPro){
+            gameoverEvalText.text = quoteIntermediate;
+        }
+        else{
+            gameoverEvalText.text = quotePro;
+        }
     }
 
     public void Restart()
