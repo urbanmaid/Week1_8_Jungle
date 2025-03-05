@@ -15,8 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startPanel, upgradePanel, endPanel, gameInfo;
     [SerializeField] int moveLvl, attackLvl, skillLvl;
     private float time;
-    private int min;
-    private int sec;
+    private string min;
+    private string sec;
     public int lvl;
     void Awake()
     {
@@ -28,10 +28,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
-        timerText.text = "0:00";
+        timerText.text = "00:00";
         time = 0;
-        min = 0;
-        sec = 0;
+        min = "00";
+        sec = "00";
     }
 
     void Update()
@@ -63,8 +63,18 @@ public class UIManager : MonoBehaviour
 
     void UpdateTimer()
     {
-        min = (int)(time / 60f);
-        sec = (int)Mathf.Ceil(time % 60f);
+        if((int)(time/60f) >= 10){
+            min = ((int)(time/60f)).ToString();
+        } else {
+            min = "0" + ((int)(time/60f)).ToString();
+        }
+
+        if(Mathf.Ceil(time % 60f) >= 10){
+             sec = ((int)Mathf.Ceil(time % 60f)).ToString();
+        } else {
+            sec = "0" + ((int)Mathf.Ceil(time % 60f)).ToString();
+        }
+
         timerText.text = min + ":" + sec;
     }
 
