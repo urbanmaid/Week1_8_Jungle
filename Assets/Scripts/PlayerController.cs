@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
         var radian = _rotateAngle * Mathf.Deg2Rad;
         var newPos = transform.position + new Vector3(Mathf.Cos(radian), Mathf.Sin(radian), 0) * spawnDistance;
         _currentProjectile.transform.position = newPos;
+        //_currentProjectile.transform.rotation = Quaternion.Euler(0, 0, - _rotateAngle);
     }
 
     private void LaunchProjectile()
@@ -165,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
         var direction = (_currentProjectile.transform.position - transform.position).normalized;
         var rb = _currentProjectile.GetComponent<Rigidbody2D>();
+        _currentProjectile.transform.rotation = Quaternion.Euler(direction);
 
         rb.linearVelocity = direction * launchSpeed;
 
