@@ -8695,6 +8695,7 @@ MonoBehaviour:
   spawnManager: {fileID: 983784276}
   player: {fileID: 1093987691}
   maxHealth: 100
+  curHealth: 0
   isPlaying: 1
   missileAmount: 10
 --- !u!1 &1106641321
@@ -10812,63 +10813,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823733564}
   m_CullTransparentMesh: 1
---- !u!1001 &1826149411
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.1341805
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.4813428
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722126284249084015, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3873177320849249521, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
-      propertyPath: m_Name
-      value: RushBossEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9d1e3cac46d88074b93cda5525657f5c, type: 3}
 --- !u!1 &1834075058
 GameObject:
   m_ObjectHideFlags: 0
@@ -11585,6 +11529,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066773082}
   m_CullTransparentMesh: 1
+--- !u!1 &2123225433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123225434}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2123225434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123225433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2124362059
 GameObject:
   m_ObjectHideFlags: 0
@@ -11734,4 +11709,4 @@ SceneRoots:
   - {fileID: 983784277}
   - {fileID: 2035187696}
   - {fileID: 1454935551}
-  - {fileID: 1826149411}
+  - {fileID: 2123225434}
