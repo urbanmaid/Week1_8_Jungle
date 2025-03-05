@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText, missileText, scoreText, timerText;
     [SerializeField] TextMeshProUGUI moveLvlText, attackLvlText, skillLvlText;
     [SerializeField] Slider healthSlider;
+    [SerializeField] TextMeshProUGUI scoreTextGameOver;
 
     [SerializeField] GameObject startPanel, upgradePanel, endPanel, gameInfo;
     [SerializeField] int moveLvl, attackLvl, skillLvl;
@@ -64,8 +65,8 @@ public class UIManager : MonoBehaviour
     void UpdateTimer()
     {
         min = (int)(time / 60f);
-        sec = (int)Mathf.Ceil(time % 60f);
-        timerText.text = min + ":" + sec;
+        sec = (int)Mathf.Ceil(time % 60f) - 1;
+        timerText.text = min + ":" + sec.ToString("D2");
     }
 
     public void StartGame()
@@ -114,7 +115,9 @@ public class UIManager : MonoBehaviour
 
     public void EndGame()
     {
+        gameInfo.SetActive(false);
         endPanel.SetActive(true);
+        scoreTextGameOver.text = "" + gm.totalScore;
     }
 
     public void Restart()

@@ -75,8 +75,8 @@ public class ItemObject : MonoBehaviour
     public void UseSkill()
     {
         // Skill usage
-        // int skillMode = Random.Range(0, 3);
-        int skillMode = 0;
+        int skillMode = Random.Range(0, 3);
+       
         // Use skill based on skillMode
         switch (skillMode)
         {
