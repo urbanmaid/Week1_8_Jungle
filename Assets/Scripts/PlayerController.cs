@@ -5,6 +5,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Components")]
+    private Collider2D coll;
+    private SpriteRenderer rend;
 
     [Header("Player Movement")]
     private Rigidbody2D playerRb;
@@ -12,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float curSpeed;
     private Camera mainCam;
     public GameObject shooter;
+    
 
     [Header("Basic Projectile")]
     public GameObject projectile;
@@ -34,7 +38,9 @@ public class PlayerController : MonoBehaviour
     public float dashTime = 1.5f;
     public GameObject gravityShot;
     [SerializeField] bool isDashing;
+    public bool isInvisible;
 
+    public GameObject shield;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +49,8 @@ public class PlayerController : MonoBehaviour
         mainCam = Camera.main;
         isDashing = false;
         curSpeed = moveSpeed;
+        coll = GetComponent<Collider2D>();
+        rend = GetComponent<SpriteRenderer >();
     }
 
 
@@ -101,9 +109,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && !isDashing)
         {
-            isDashing = true;
-            curSpeed *= 4;
-            StartCoroutine("Dash");
+            Dash();
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && !isInvisible)
+        {
+            Invisible();
+
         }
     }
 
@@ -153,17 +166,38 @@ public class PlayerController : MonoBehaviour
         GameObject gShot = Instantiate(gravityShot, transform.position, shooter.transform.rotation);
     }
 
-    IEnumerator Dash(){
+    void Dash()
+    {
+        isDashing = true;
+        curSpeed *= 4;
+        StartCoroutine("DashCo");
+    }
+    IEnumerator DashCo()
+    {
         yield return new WaitForSeconds(3f);
         isDashing = false;
         curSpeed = moveSpeed;
     }
 
+    void Invisible(){
+        isInvisible = true;
+        shield.SetActive(true);
+        StartCoroutine("InvisibleCo");
+    }
+    IEnumerator InvisibleCo()
+    {
+        yield return new WaitForSeconds(3f);
+        isInvisible = false;
+        shield.SetActive(false);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isDashing && collision.gameObject.CompareTag("Enemy")){
+        if (isDashing && collision.gameObject.CompareTag("Enemy"))
+        {
             collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>().Damage(10f);
-        } else if (collision.gameObject.CompareTag("Enemy Range"))
+        }
+        else if (collision.gameObject.CompareTag("Enemy Range"))
         {
             Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponentInParent<Kimminkyum0212_EnemyController>();
             enemy.inRange = true;

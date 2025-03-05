@@ -33,11 +33,15 @@ public class Kimminkyum0212_Projectile : Kimminkyum0212_Poolable
             Kimminkyum0212_EnemyController enemy = collision.gameObject.GetComponent<Kimminkyum0212_EnemyController>();
             enemy.Damage(damage);
             ReleaseObject();
-        } 
-        else if(gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
+        }
+        else if (gameObject.CompareTag("Enemy Projectile") && collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.DamagePlayer(damage);
-            ReleaseObject();
+            if (!collision.GetComponent<PlayerController>().isInvisible)
+            {
+                GameManager.instance.DamagePlayer(damage);
+                ReleaseObject();
+            }
+
         }
     }
 }

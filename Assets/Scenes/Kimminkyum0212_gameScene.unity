@@ -615,7 +615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -1900,7 +1900,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: StartStage
         m_Mode: 1
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -8357,7 +8357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -8857,7 +8857,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -9151,7 +9151,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -9228,7 +9228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101194917}
-  - component: {fileID: 1101194916}
+  - component: {fileID: 1101194918}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -9236,34 +9236,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1101194916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101194915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d27a6af557b272a4696e4700823cbfd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnManager: {fileID: 114432840}
-  player: {fileID: 1093987691}
-  maxHealth: 100
-  stageCount: 8
-  enemyCount: 0
-  isPlaying: 0
-  healthSlider: {fileID: 1261262681}
-  enemyCountText: {fileID: 1106641323}
-  titleScreen: {fileID: 1834075058}
-  playScreen: {fileID: 292059490}
-  endStage: {fileID: 136285773}
-  winScreen: {fileID: 1651636771}
-  gameoverScreen: {fileID: 1557311812}
-  upgradeButtons: {fileID: 1211105967}
-  warningScreen: {fileID: 1645962730}
-  pauseScreen: {fileID: 30319717}
 --- !u!4 &1101194917
 Transform:
   m_ObjectHideFlags: 0
@@ -9279,6 +9251,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101194918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101194915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7736b45607fbde1478c9b20279b5e897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnManager: {fileID: 983784276}
+  player: {fileID: 1093987691}
+  maxHealth: 100
+  enemyCount: 0
+  isPlaying: 1
 --- !u!1 &1106641321
 GameObject:
   m_ObjectHideFlags: 0
@@ -9425,7 +9414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1134957376}
   - component: {fileID: 1134957377}
-  - component: {fileID: 1134957378}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -9503,19 +9491,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1134957378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134957375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719160b71edbb754b9b99172648d6869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &1159385818
 GameObject:
   m_ObjectHideFlags: 0
@@ -9853,7 +9828,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -11037,7 +11012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -11847,7 +11822,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -12013,9 +11988,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f469313c800f44a42994abd15abf5b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 30
+  spawnInterval: 40
   isAbleToSpawn: 0
-  itemList: []
+  isSpawned: 0
+  itemList:
+  - {fileID: 572938174624973367, guid: 65b3036f11b92c74c8b7d3fbfcf63075, type: 3}
+  - {fileID: 236536555064978548, guid: 0364fa43efaaa6c47bef52284287ee4e, type: 3}
+  - {fileID: 6822038983473570202, guid: ecbf829b7806d7145ac1301dc20d0deb, type: 3}
 --- !u!4 &2035187696
 Transform:
   m_ObjectHideFlags: 0
@@ -12250,7 +12229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101194916}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kimminkyum0212_GameManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1

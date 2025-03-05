@@ -82,7 +82,9 @@ public class Kimminkyum0212_EnemyController : MonoBehaviour
     {
         if (itemSpawnTimeManager.IsAbleToSpawnItem())
         {
+            // Spawn one instance of item and disable the ability to spawn item
             Instantiate(itemSpawnTimeManager.SpawnItem(), targetPosition, Quaternion.identity);
+            itemSpawnTimeManager.SetAbleToSpawnItem(false);
         }
     }
 
