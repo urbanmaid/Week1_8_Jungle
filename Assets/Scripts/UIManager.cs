@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     private int sec;
 
     [Header("Score Evaluation")]
+    [SerializeField] float scoreInterval = 1f;
+    private float scoreTimer = 0f;
     [SerializeField] int scoreCutAmateur = 250;
     [SerializeField] int scoreCutIntermediate = 500;
     [SerializeField] int scoreCutPro = 1000;
@@ -42,12 +44,20 @@ public class UIManager : MonoBehaviour
         time = 0;
         min = 0;
         sec = 0;
+        scoreTimer = 0f;
     }
 
     void Update()
     {
+        
         if (gm.isPlaying)
         {
+            scoreTimer += Time.deltaTime;
+            if(scoreTimer >= scoreInterval){
+                gm.totalScore += 1;
+                scoreTimer = 0f;
+                UpdateScore();
+            }
             time += Time.deltaTime;
             UpdateTimer();
         }

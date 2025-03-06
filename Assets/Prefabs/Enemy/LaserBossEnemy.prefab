@@ -54,7 +54,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   fireRate: 3
   range: 20
-  enemyScore: 100
+  enemyScore: 50
   itemSpawnTimeManager: {fileID: 0}
   bossMoveSpeed: 1
   laserPrefab: {fileID: 5702909733206541825, guid: aa85fe4968c861d40ad286ef2f223a67, type: 3}

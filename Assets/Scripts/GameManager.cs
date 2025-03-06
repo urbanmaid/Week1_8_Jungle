@@ -39,8 +39,6 @@ public class GameManager : MonoBehaviour
     {
         curHealth = maxHealth;
         missileAmount = 0;
-
-        StartCoroutine(IncreaseScore());
     }
 
     // Update is called once per frame

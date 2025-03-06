@@ -55,7 +55,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   fireRate: 0
   range: 0
-  enemyScore: 100
+  enemyScore: 50
   itemSpawnTimeManager: {fileID: 0}
   bossMoveSpeed: 1
   pointEffector: {fileID: 0}
