@@ -9,7 +9,7 @@ public class BossEnemy : EnemyController
     [Header("Boss Enemy")]
     public float bossMoveSpeed = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     protected override void Start()
     {
         base.Start();

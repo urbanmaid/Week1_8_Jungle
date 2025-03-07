@@ -10,6 +10,7 @@ public class BlackHoleBossEnemy : BossEnemy
 
     public void ActivateBlackHole(bool isActive)
     {
+        //prefab blackhole boss
         pointEffector.enabled = isActive;
     }
 }
